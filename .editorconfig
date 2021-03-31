@@ -1,0 +1,22 @@
+root = true
+
+[*]
+charset = utf-8
+indent_size = 4
+insert_final_newline = true
+max_line_length = 120
+tab_width = 4
+
+[*.java]
+ij_java_block_comment_at_first_column = false
+ij_java_class_count_to_use_import_on_demand = 50
+ij_java_do_while_brace_force = always
+ij_java_for_brace_force = always
+ij_java_if_brace_force = always
+ij_java_keep_control_statement_in_one_line = false
+ij_java_keep_first_column_comment = false
+ij_java_line_comment_add_space = true
+ij_java_line_comment_at_first_column = false
+ij_java_packages_to_use_import_on_demand = javax.swing.*
+ij_java_names_count_to_use_import_on_demand = 50
+ij_java_while_brace_force = always
