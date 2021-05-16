@@ -110,10 +110,12 @@ public class ControlsPanel extends JPanel {
         MazeCarver.CarvedMaze finalMaze = carver.carveMaze(baseMaze);
 
         this.pathways = finalMaze.pathways();
+        this.start = baseMaze.getStart();
+        this.end = baseMaze.getEnd();
 
         this.drawer.drawWalls(finalMaze.walls());
-        this.drawer.drawPoint(baseMaze.getStart().getCenter());
-        this.drawer.drawPoint(baseMaze.getEnd().getCenter());
+        this.drawer.drawPoint(this.start.getCenter());
+        this.drawer.drawPoint(this.end.getCenter());
     }
 
     private void drawShortestPath(ActionEvent event) {
