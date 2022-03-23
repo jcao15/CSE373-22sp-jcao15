@@ -177,7 +177,7 @@ tasks.register('addSkeletonRemote') {
         !grgit.remote.list().any { it.name == 'skeleton' }
     }
     doLast {
-        grgit.remote.add(name: 'skeleton', url: 'git@gitlab.cs.washington.edu:cse373-21sp-students/skeleton.git')
+        grgit.remote.add(name: 'skeleton', url: 'git@gitlab.cs.washington.edu:cse373-22sp-students/skeleton.git')
     }
 }
 
