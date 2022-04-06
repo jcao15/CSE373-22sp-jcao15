@@ -28,16 +28,38 @@ public class IntTreeProblems {
      * (The root node is treated as having depth 1.)
      */
     public static int depthSum(IntTree tree) {
-        // TODO replace this with your code
-        throw new UnsupportedOperationException("Not implemented yet.");
+        int i = 1;
+        return depthSumHelper(tree.overallRoot, i);
+    }
+
+    private static int depthSumHelper(IntTreeNode treeNode, int i) {
+        if (treeNode == null) {
+            return 0;
+        } else {
+            return i * treeNode.data + depthSumHelper(treeNode.left, i + 1) + depthSumHelper(treeNode.right, i + 1);
+        }
     }
 
     /**
      * Removes all leaf nodes from the given tree.
      */
     public static void removeLeaves(IntTree tree) {
-        // TODO replace this with your code
-        throw new UnsupportedOperationException("Not implemented yet.");
+
+        tree.overallRoot = rmLeavesHelper(tree.overallRoot);
+
+    }
+
+    private static IntTreeNode rmLeavesHelper(IntTreeNode treeNode) {
+
+        if (treeNode != null) {
+            if (treeNode.left == null && treeNode.right == null) {
+                treeNode = null;
+            } else {
+                treeNode.left = rmLeavesHelper(treeNode.left);
+                treeNode.right = rmLeavesHelper(treeNode.right);
+            }
+        }
+        return treeNode;
     }
 
     /**
@@ -45,7 +67,28 @@ public class IntTreeProblems {
      * (The resulting tree is still a BST.)
      */
     public static void trim(IntTree tree, int min, int max) {
-        // TODO replace this with your code
-        throw new UnsupportedOperationException("Not implemented yet.");
+
+        tree.overallRoot = trimHelper(tree.overallRoot, min, max);
+
+    }
+
+    private static IntTreeNode trimHelper(IntTreeNode treeNode, int min, int max) {
+
+        if (treeNode == null) {
+            return null;
+        }
+
+        if (treeNode.data < min) {
+            return trimHelper(treeNode.right, min, max);
+        }
+
+        if (treeNode.data > max) {
+            return trimHelper(treeNode.left, min, max);
+        }
+
+        treeNode.left = trimHelper(treeNode.left, min, max);
+        treeNode.right = trimHelper(treeNode.right, min, max);
+
+        return treeNode;
     }
 }

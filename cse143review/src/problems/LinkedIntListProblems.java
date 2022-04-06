@@ -22,16 +22,29 @@ public class LinkedIntListProblems {
      * Reverses the 3 elements in the `LinkedIntList` (assume there are exactly 3 elements).
      */
     public static void reverse3(LinkedIntList list) {
-        // TODO replace this with your code
-        throw new UnsupportedOperationException("Not implemented yet.");
+
+        list.front.next.next.next = list.front;
+        list.front = list.front.next.next;
+        list.front.next.next.next = list.front.next;
+        list.front.next = list.front.next.next;
+        list.front.next.next.next = null;
+
     }
 
     /**
      * Moves the first element of the input list to the back of the list.
      */
     public static void firstToLast(LinkedIntList list) {
-        // TODO replace this with your code
-        throw new UnsupportedOperationException("Not implemented yet.");
+
+        if (list.front != null) {
+            ListNode temp = list.front;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = list.front;
+            list.front = list.front.next;
+            temp.next.next = null;
+        }
     }
 
     /**
@@ -40,7 +53,30 @@ public class LinkedIntListProblems {
      */
     public static LinkedIntList concatenate(LinkedIntList a, LinkedIntList b) {
         // Hint: you'll need to use the 'new' keyword to construct new objects.
-        // TODO replace this with your code
-        throw new UnsupportedOperationException("Not implemented yet.");
+        if (a.front != null && b.front != null) {
+            LinkedIntList ans = new LinkedIntList(a.front.data);
+
+            ListNode temp1 = a.front.next;
+            ListNode temp2 = ans.front;
+            ListNode temp3 = b.front;
+
+            while (temp1 != null) {
+                temp2.next = new ListNode(temp1.data);
+                temp1 = temp1.next;
+                temp2 = temp2.next;
+            }
+            while (temp3 != null) {
+                temp2.next = new ListNode(temp3.data);
+                temp3 = temp3.next;
+                temp2 = temp2.next;
+            }
+            return ans;
+        } else if (a.front != null) {
+            return a;
+        } else if (b.front != null) {
+            return b;
+        } else {
+            return new LinkedIntList();
+        }
     }
 }

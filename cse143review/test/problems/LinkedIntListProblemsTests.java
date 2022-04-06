@@ -4,6 +4,8 @@ import datastructures.LinkedIntList;
 import edu.washington.cse373.BaseTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 /*
  * WARNING: These tests determine your grade for this assignment.
  * You don't need to change these tests, but it may be useful to temporarily add extra
