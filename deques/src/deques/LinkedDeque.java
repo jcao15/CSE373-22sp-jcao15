@@ -80,12 +80,19 @@ public class LinkedDeque<T> extends AbstractDeque<T> {
     }
 
     public T get(int index) {
-        Node<T> tempNode = front.next;
+
         if ((index >= size) || (index < 0)) {
             return null;
         } else if (index == size - 1) {
             return back.prev.value;
+        } else if (index > (size / 2)) {
+            Node<T> tempNode = back.prev;
+            for (int i = size - 1; i > index; i--) {
+                tempNode = tempNode.prev;
+            }
+            return tempNode.value;
         } else {
+            Node<T> tempNode = front.next;
             for (int i = 0; i < index; i++) {
                 tempNode = tempNode.next;
             }
