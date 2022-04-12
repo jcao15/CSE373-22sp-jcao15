@@ -256,6 +256,7 @@ public abstract class BaseDequeTests extends BaseTest {
         assertThat(deque.removeLast()).isEqualTo(5);
         assertThat(deque.removeLast()).isEqualTo(4);
         assertThat(deque.removeLast()).isEqualTo(3);
+        assertThat(deque.removeFirst()).isEqualTo(-2);
         System.out.println(deque);
     }
 }
