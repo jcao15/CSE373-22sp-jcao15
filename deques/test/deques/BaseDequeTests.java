@@ -217,6 +217,7 @@ public abstract class BaseDequeTests extends BaseTest {
 
         // Test that removing and adding back is okay
         assertThat(deque.removeFirst()).isEqualTo(-1);
+
         deque.addFirst(-1);
         assertThat(deque.get(0)).isEqualTo(-1);
 
@@ -231,9 +232,30 @@ public abstract class BaseDequeTests extends BaseTest {
         assertThat(deque.removeLast()).isEqualTo(3);
         assertThat(deque.removeLast()).isEqualTo(2);
 
-        // TODO ArrayDeque fails here; write better tests to help you find and fix the bug
         int actual = deque.removeLast();
         assertThat(actual).isEqualTo(1);
         checkInvariants(deque);
+    }
+
+    @Test
+    void selfTest() {
+        ArrayDeque<Integer> deque = new ArrayDeque<>();
+        deque.addFirst(0);
+        deque.addLast(1);
+        deque.addLast(2);
+        deque.addLast(3);
+        deque.addLast(4);
+        deque.addLast(5);
+        deque.addFirst(-2);
+        deque.addFirst(-3);
+        deque.addLast(10);
+        System.out.println(deque);
+        // Test a tricky sequence of removes
+        assertThat(deque.removeFirst()).isEqualTo(-3);
+        assertThat(deque.removeLast()).isEqualTo(10);
+        assertThat(deque.removeLast()).isEqualTo(5);
+        assertThat(deque.removeLast()).isEqualTo(4);
+        assertThat(deque.removeLast()).isEqualTo(3);
+        System.out.println(deque);
     }
 }

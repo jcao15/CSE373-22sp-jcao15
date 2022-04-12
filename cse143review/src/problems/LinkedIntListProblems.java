@@ -22,12 +22,17 @@ public class LinkedIntListProblems {
      * Reverses the 3 elements in the `LinkedIntList` (assume there are exactly 3 elements).
      */
     public static void reverse3(LinkedIntList list) {
-
+        System.out.println(list);
         list.front.next.next.next = list.front;
+        System.out.println(list);
         list.front = list.front.next.next;
+        System.out.println(list);
         list.front.next.next.next = list.front.next;
+        System.out.println(list);
         list.front.next = list.front.next.next;
+        System.out.println(list);
         list.front.next.next.next = null;
+        System.out.println(list);
 
     }
 
