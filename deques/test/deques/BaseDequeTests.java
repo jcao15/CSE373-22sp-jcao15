@@ -236,27 +236,4 @@ public abstract class BaseDequeTests extends BaseTest {
         assertThat(actual).isEqualTo(1);
         checkInvariants(deque);
     }
-
-    @Test
-    void selfTest() {
-        ArrayDeque<Integer> deque = new ArrayDeque<>();
-        deque.addFirst(0);
-        deque.addLast(1);
-        deque.addLast(2);
-        deque.addLast(3);
-        deque.addLast(4);
-        deque.addLast(5);
-        deque.addFirst(-2);
-        deque.addFirst(-3);
-        deque.addLast(10);
-        System.out.println(deque);
-        // Test a tricky sequence of removes
-        assertThat(deque.removeFirst()).isEqualTo(-3);
-        assertThat(deque.removeLast()).isEqualTo(10);
-        assertThat(deque.removeLast()).isEqualTo(5);
-        assertThat(deque.removeLast()).isEqualTo(4);
-        assertThat(deque.removeLast()).isEqualTo(3);
-        assertThat(deque.removeFirst()).isEqualTo(-2);
-        System.out.println(deque);
-    }
 }
