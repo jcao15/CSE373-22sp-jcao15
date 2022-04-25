@@ -21,7 +21,6 @@ public class ChainedHashMap<K, V> extends AbstractIterableMap<K, V> {
     We will be inspecting it in our secret tests.
      */
     AbstractIterableMap<K, V>[] chains;
-    Iterator<Map.Entry<K, V>> itr;
 
     // You're encouraged to add extra fields (and helper methods) though!
     int numOfElements;
