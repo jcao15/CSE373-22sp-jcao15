@@ -187,7 +187,7 @@ public class ChainedHashMap<K, V> extends AbstractIterableMap<K, V> {
     @Override
     public Iterator<Map.Entry<K, V>> iterator() {
         // Note: you won't need to change this method (unless you add more constructor parameters)
-        return new ChainedHashMapIterator<>(this.chains, this.itr);
+        return new ChainedHashMapIterator<>(this.chains);
     }
 
     /*
@@ -202,7 +202,7 @@ public class ChainedHashMap<K, V> extends AbstractIterableMap<K, V> {
         private void moveNext() {
             idx++;
             //check if the chain bucket is null, if so, move to the next chain bucket
-            while (idx < chains.length && chains[idx] == null && chains[idx].size() < 1) {
+            while (idx < chains.length && chains[idx] == null) {
                 idx++;
             }
             if (idx < chains.length) {
@@ -213,7 +213,7 @@ public class ChainedHashMap<K, V> extends AbstractIterableMap<K, V> {
 
         }
 
-        public ChainedHashMapIterator(AbstractIterableMap<K, V>[] chains, Iterator<Map.Entry<K, V>> itr) {
+        public ChainedHashMapIterator(AbstractIterableMap<K, V>[] chains) {
             this.chains = chains;
             idx = -1;
             //initiate the chain(arrayMap) iterator
