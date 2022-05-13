@@ -71,12 +71,6 @@ public class ArrayHeapMinPQTests extends BaseTest {
             assertThat(pq).isValid();
         }
 
-        @Test
-        void add_nullItem_doesntThrowIllegalArgument() {
-            ExtrinsicMinPQ<String> pq = setUpMinPQ();
-            pq.add(null, 15);
-            assertThat(pq).isValid();
-        }
     }
 
     @Nested
@@ -154,12 +148,7 @@ public class ArrayHeapMinPQTests extends BaseTest {
             assertThat(pq).isValid();
         }
 
-        @Test
-        void add_nullItem_doesntThrowIllegalArgument() {
-            ExtrinsicMinPQ<String> pq = setUpMinPQ();
-            pq.add(null, 15);
-            assertThat(pq).isValid();
-        }
+
 
         @Test
         void add_duplicateItem_throwsIllegalArgument() {
@@ -333,14 +322,6 @@ public class ArrayHeapMinPQTests extends BaseTest {
             assertThat(pq2.size()).isEqualTo(1);
         }
 
-        @Test
-        void addingNull_containsKeyNull() {
-            ExtrinsicMinPQ<String> pq = createMinPQ();
-
-            pq.add(null, 15);
-            assertThat(pq.contains(null)).isTrue();
-            assertThat(pq).isValid();
-        }
 
         @Test
         void addingWithNegativePriorities_doesNotFail() {
