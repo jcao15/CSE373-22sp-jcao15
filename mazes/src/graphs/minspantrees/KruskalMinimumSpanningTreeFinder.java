@@ -73,7 +73,7 @@ public class KruskalMinimumSpanningTreeFinder<G extends KruskalGraph<V, E>, V, E
             }
         }
         //Check if the MST is completed: edge's amount in MST should be equal to vertices - 1
-        if (mst.size() == vertices.size() - 1 || edges.size() == 0) {
+        if (mst.size() == vertices.size() - 1 || vertices.size() == 0) {
             return new MinimumSpanningTree.Success<>(mst);
         } else {
             return new MinimumSpanningTree.Failure<>();
