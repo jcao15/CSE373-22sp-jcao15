@@ -77,14 +77,19 @@ public class UnionBySizeCompressingDisjointSets<T> implements DisjointSets<T> {
             seenNode.add(item);
             item = nodeDict.get(item);
         }
+        // while (parentIdx.get(item) >  0) {
+        //     item = nodeDict.get(item);
+        // }
         T tempRoot = item;
         //after the while loop break, item should be the overallRoot
         //Path compression to have all the seen nodes in front of the search node point to overallRoot.
-        for (T node : seenNode) {
-            nodeDict.replace(node, nodeDict.get(node), tempRoot);
-            //get the overallRoot index in array representation
-            int updatedIdx = parentIdx.get(tempRoot);
-            pointers.add(parentIdx.get(node), updatedIdx);
+        if (!seenNode.isEmpty()) {
+            for (T node : seenNode) {
+                nodeDict.replace(node, nodeDict.get(node), tempRoot);
+                //get the overallRoot index in array representation
+                int updatedIdx = parentIdx.get(tempRoot);
+                pointers.add(parentIdx.get(node), updatedIdx);
+            }
         }
         //clear up seenNode set after done the path compression
         seenNode.clear();
@@ -112,18 +117,20 @@ public class UnionBySizeCompressingDisjointSets<T> implements DisjointSets<T> {
 
         if (weights.get(root1) >= weights.get(root2)) {
 
-            pointers.add(parentIdx.get(root2), parentIdx.get(root1));
+            pointers.set(parentIdx.get(root2), parentIdx.get(root1));
             parentIdx.replace(root2, parentIdx.get(root1));
             nodeDict.replace(root2, root1);
             weights.replace(root1, weights.get(root1) + weights.get(root2));
             weights.remove(root2);
+            pointers.set(parentIdx.get(root1), -1 * weights.get(root1));
 
         } else {
-            pointers.add(parentIdx.get(root1), parentIdx.get(root2));
+            pointers.set(parentIdx.get(root1), parentIdx.get(root2));
             parentIdx.replace(root1, parentIdx.get(root2));
             nodeDict.replace(root1, root2);
             weights.replace(root2, weights.get(root1) + weights.get(root2));
             weights.remove(root1);
+            pointers.set(parentIdx.get(root2), -1 * weights.get(root2));
         }
         return true;
     }
