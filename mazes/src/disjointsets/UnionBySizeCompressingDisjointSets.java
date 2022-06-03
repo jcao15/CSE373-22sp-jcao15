@@ -77,12 +77,13 @@ public class UnionBySizeCompressingDisjointSets<T> implements DisjointSets<T> {
             seenNode.add(item);
             item = nodeDict.get(item);
         }
+        T tempRoot = item;
         //after the while loop break, item should be the overallRoot
         //Path compression to have all the seen nodes in front of the search node point to overallRoot.
         for (T node : seenNode) {
-            nodeDict.replace(node, item);
+            nodeDict.replace(node, nodeDict.get(node), tempRoot);
             //get the overallRoot index in array representation
-            int updatedIdx = parentIdx.get(item);
+            int updatedIdx = parentIdx.get(tempRoot);
             pointers.add(parentIdx.get(node), updatedIdx);
         }
         //clear up seenNode set after done the path compression
