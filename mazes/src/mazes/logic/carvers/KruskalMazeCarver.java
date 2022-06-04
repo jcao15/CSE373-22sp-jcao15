@@ -45,10 +45,12 @@ public class KruskalMazeCarver extends MazeCarver {
         Set<Wall> updatedWalls = new HashSet<>();
 
         for (Wall wall : walls) {
+            //Randomizing the wall weights
             double weight = rand.nextDouble();
             EdgeWithData<Room, Wall> newEdge = new EdgeWithData<>(wall.getRoom1(), wall.getRoom2(), weight, wall);
             edges.add(newEdge);
         }
+        //Create an MST after removing random walls
         HashSet<EdgeWithData<Room, Wall>> newbie = (HashSet<EdgeWithData<Room, Wall>>)
             this.minimumSpanningTreeFinder.findMinimumSpanningTree(new MazeGraph(edges)).edges();
         // Hint: you'll probably need to include something like the following:
