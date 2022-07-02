@@ -1,5 +1,8 @@
 # CSE 373 Projects
 
+## Warnings:
+# !!! DO NOT COPY AND PASTE !!!
+
 You'll use this Git repository for all coding project assignments in this class.
 
 This project is meant to be imported into IntelliJ as a Gradle project.
